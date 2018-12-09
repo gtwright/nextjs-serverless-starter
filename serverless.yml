@@ -1,6 +1,6 @@
 service: nextjs
-app: ${self:custom.environment.APP}
-tenant: ${self:custom.environment.TENANT}
+app: ${self:provider.environment.APP}
+tenant: ${self:provider.environment.TENANT}
 plugins:
   - serverless-offline
   - serverless-domain-manager
@@ -11,19 +11,22 @@ provider:
   region: us-east-1
   stage: ${opt:stage,'dev'}
   environment:
-    STAGE: ${self:provider.stage}
-    NODE_ENV: ${self:provider.stage}
-    LAMBDA: true
+      NODE_ENV: prod
+      LAMBDA: true
+      CERTIFICATE_NAME: "*.commoncalendar.org"
+      TENANT: gtwright
+      APP: demo
+      DOMAIN_NAME: "dev.commoncalendar.org"
 custom:
-  environment: ${file(env.yml):${self:provider.stage}}
-  # customDomain:
-  #   domainName: ${self:custom.environment.DOMAIN_NAME}
-  #   stage: ${self:provider.stage}
-  #   certificateName: ${self:custom.environment.CERTIFICATE_NAME}
-  #   createRoute53Record: true
-  #   endpointType: 'edge'
+  # environment: ${file(env.yml):${self:provider.stage}}
+  customDomain:
+    domainName: ${self:provider.environment.DOMAIN_NAME}
+    stage: ${self:provider.stage}
+    certificateName: ${self:provider.environment.CERTIFICATE_NAME}
+    createRoute53Record: true
+    endpointType: 'edge'
   apigwBinary:
-    types:
+    types:           #list of mime-types 
       - '*/*'
 
 functions:
