@@ -1,4 +1,6 @@
 .next
 .serverless
+.env
+env.yml
 node_modules
 secrets.yml

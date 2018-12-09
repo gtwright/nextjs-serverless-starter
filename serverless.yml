@@ -1,6 +1,6 @@
 service: nextjs
-app: ${self:provider.environment.APP}
-tenant: ${self:provider.environment.TENANT}
+app: ${env:APP}
+tenant: ${env:TENANT}
 plugins:
   - serverless-offline
   - serverless-domain-manager
@@ -10,12 +10,12 @@ provider:
   runtime: nodejs8.10
   region: us-east-1
   stage: ${opt:stage,'dev'}
-  environment: ${file(secrets.yml):${self:provider.stage}}
 custom:
+  environment: ${file(secrets.yml):${self:provider.stage}, file(env.yml):default}
   customDomain:
-    domainName: ${self:provider.environment.DOMAIN_NAME}
+    domainName: ${env:DOMAIN_NAME}
     stage: ${self:provider.stage}
-    certificateName: ${self:provider.environment.CERTIFICATE_NAME}
+    certificateName: ${env:CERTIFICATE_NAME}
     createRoute53Record: true
     endpointType: 'edge'
   apigwBinary:
