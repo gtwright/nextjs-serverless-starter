@@ -1,6 +1,6 @@
 service: nextjs
-app: ${env:APP}
-tenant: ${env:TENANT}
+app: ${self:custom.environment.APP}
+tenant: ${self:custom.environment.TENANT}
 plugins:
   - serverless-offline
   - serverless-domain-manager
@@ -14,8 +14,8 @@ provider:
     STAGE: ${self:provider.stage}
     NODE_ENV: ${self:provider.stage}
     LAMBDA: true
-# custom:
-  # environment: ${file(env.yml):${self:provider.stage}}
+custom:
+  environment: ${file(env.yml):${self:provider.stage}}
   # customDomain:
   #   domainName: ${self:custom.environment.DOMAIN_NAME}
   #   stage: ${self:provider.stage}
