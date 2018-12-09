@@ -1,0 +1,29 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "offline": "serverless offline start",
+    "deploy": "npm run build && serverless deploy",
+    "deploy-prod": "npm run build && serverless deploy --stage prod"
+  },
+  "author": "gtwright",
+  "license": "MIT",
+  "dependencies": {
+    "aws-serverless-express": "^3.3.5",
+    "express": "^4.16.4",
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-domain-manager": "^2.6.6",
+    "serverless-http": "^1.8.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^3.31.3"
+  }
+}

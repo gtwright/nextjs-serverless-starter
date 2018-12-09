@@ -1,0 +1,4 @@
+.next
+.serverless
+node_modules
+secrets.yml
