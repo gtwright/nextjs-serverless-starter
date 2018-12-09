@@ -10,8 +10,11 @@ provider:
   runtime: nodejs8.10
   region: us-east-1
   stage: ${opt:stage,'dev'}
+  environment:
+    STAGE: ${self:provider.stage}
+    NODE_ENV: ${self:provider.stage}
 custom:
-  environment: ${file(secrets.yml):${self:provider.stage}, file(env.yml):default}
+  environment: ${file(env.yml):${self:provider.stage}, file(env.yml):default}
   customDomain:
     domainName: ${env:DOMAIN_NAME}
     stage: ${self:provider.stage}

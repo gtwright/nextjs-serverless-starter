@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=prod node server.js",
     "offline": "serverless offline start",
     "deploy": "npm run build && serverless deploy",
     "deploy-prod": "npm run build && serverless deploy --stage prod"

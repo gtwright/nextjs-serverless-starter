@@ -2,7 +2,7 @@ const express = require("express");
 const next = require("next");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
-const dev = process.env.NODE_ENV !== "production";
+const dev = process.env.NODE_ENV !== "prod";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -24,7 +24,6 @@ const createServer = () => {
       let host = req.headers.host;
       if (host.indexOf("amazonaws.com") != -1) {
         let assetPrefix = "https://" + host;
-        // needs to match the stages defined in `serverless.yml`
         let stage = process.env.STAGE;
         assetPrefix += `/${stage}`;
         app.setAssetPrefix(assetPrefix);
