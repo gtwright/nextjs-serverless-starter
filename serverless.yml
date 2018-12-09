@@ -1,6 +1,6 @@
 service: nextjs
-app: demo
-tenant: gtwright
+app: ${self:provider.environment.APP}
+tenant: ${self:provider.environment.TENANT}
 plugins:
   - serverless-offline
   - serverless-domain-manager
