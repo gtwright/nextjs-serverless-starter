@@ -14,15 +14,15 @@ provider:
     STAGE: ${self:provider.stage}
     NODE_ENV: ${self:provider.stage}
 custom:
-  environment: ${file(env.yml):${self:provider.stage}, file(env.yml):default}
+  environment: ${file(env.yml):${self:provider.stage}}
   customDomain:
-    domainName: ${env:DOMAIN_NAME}
+    domainName: ${self:custom.environment.DOMAIN_NAME}
     stage: ${self:provider.stage}
-    certificateName: ${env:CERTIFICATE_NAME}
+    certificateName: ${self:custom.environment.CERTIFICATE_NAME}
     createRoute53Record: true
     endpointType: 'edge'
   apigwBinary:
-    types:           #list of mime-types 
+    types:
       - '*/*'
 
 functions:
