@@ -11,12 +11,12 @@ provider:
   region: us-east-1
   stage: ${opt:stage,'dev'}
   environment:
-      NODE_ENV: prod
-      LAMBDA: true
-      CERTIFICATE_NAME: "*.commoncalendar.org"
-      TENANT: gtwright
-      APP: demo
-      DOMAIN_NAME: "dev.commoncalendar.org"
+    NODE_ENV: prod
+    LAMBDA: true
+    CERTIFICATE_NAME: "*.commoncalendar.org"
+    TENANT: gtwright
+    APP: demo
+    DOMAIN_NAME: "dev.commoncalendar.org"
 custom:
   # environment: ${file(env.yml):${self:provider.stage}}
   customDomain:
