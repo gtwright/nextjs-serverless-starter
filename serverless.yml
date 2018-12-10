@@ -1,6 +1,6 @@
 service: nextjs
-app: ${ssm:/nextjs-starter/app}
-tenant: ${ssm:/nextjs-starter/tenant}
+app: demo
+tenant: gtwright
 plugins:
   - serverless-offline
   # - serverless-domain-manager
