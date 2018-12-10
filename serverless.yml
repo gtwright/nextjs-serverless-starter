@@ -23,7 +23,6 @@ custom:
   apigwBinary:
     types:           #list of mime-types 
       - '*/*'
-
 functions:
   next:
     handler: lambda.handler
