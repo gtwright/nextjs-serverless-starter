@@ -2,8 +2,8 @@ const express = require("express");
 const next = require("next");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
-// const dev = process.env.NODE_ENV !== "prod";
-const app = next();
+const dev = process.env.NODE_ENV !== "prod";
+const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const createServer = () => {
@@ -37,14 +37,14 @@ const createServer = () => {
 
 const server = createServer();
 
-// if (!process.env.LAMBDA) {
-//   app.prepare().then(() => {
-//     server.listen(port, err => {
-//       if (err) throw err;
-//       console.log(`Ready on http://localhost:${port}`);
-//     });
-//   });
-// }
+if (!process.env.LAMBDA) {
+  app.prepare().then(() => {
+    server.listen(port, err => {
+      if (err) throw err;
+      console.log(`Ready on http://localhost:${port}`);
+    });
+  });
+}
 
 exports.app = app;
 exports.server = server;
