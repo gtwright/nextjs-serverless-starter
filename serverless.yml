@@ -31,7 +31,9 @@ functions:
           method: ANY
           path: /
           cors: true
+          authorizer: aws_iam
       - http:
           method: ANY
           path: /{any+}
           cors: true
+          authorizer: aws_iam
