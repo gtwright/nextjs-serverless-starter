@@ -13,7 +13,7 @@ provider:
   environment:
     NODE_ENV: prod
     LAMBDA: true
-custom:
+custom: 
   # customDomain:
   #   domainName: ${ssm:/nextjs-starter/domainName-${self:provider.stage}}
   #   stage: ${self:provider.stage}
