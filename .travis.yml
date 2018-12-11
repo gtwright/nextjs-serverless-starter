@@ -9,5 +9,4 @@ script:
     - sls deploy
 branches:
   only:
-  - master
   - dotenv
