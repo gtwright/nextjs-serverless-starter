@@ -3,7 +3,6 @@ app: demo
 tenant: gtwright
 plugins:
   - serverless-offline
-  # - serverless-domain-manager
   - serverless-apigw-binary
 provider:
   name: aws
@@ -14,14 +13,8 @@ provider:
     NODE_ENV: prod
     LAMBDA: true
 custom: 
-  # customDomain:
-  #   domainName: ${ssm:/nextjs-starter/domainName-${self:provider.stage}}
-  #   stage: ${self:provider.stage}
-  #   certificateName: ${ssm:/nextjs-starter/certificateName}
-  #   createRoute53Record: true
-  #   endpointType: 'edge'
   apigwBinary:
-    types:           #list of mime-types 
+    types:
       - '*/*'
 functions:
   next:

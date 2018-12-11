@@ -19,7 +19,6 @@ const createServer = () => {
     app.render(req, res, actualPage, queryParams);
   });
   server.get("*", (req, res) => {
-    console.log(process.env);
     if (process.env.LAMBDA) {
       let host = req.headers.host;
       if (host.indexOf("amazonaws.com") != -1) {
