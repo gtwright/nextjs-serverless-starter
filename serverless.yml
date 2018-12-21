@@ -1,6 +1,6 @@
 service: nextjs
-app: ${self:provider.environment.APP}
-tenant: ${self:provider.environment.TENANT}
+app: demo
+tenant: gtwright
 plugins:
   - serverless-offline
   - serverless-domain-manager
@@ -10,7 +10,7 @@ provider:
   runtime: nodejs8.10
   region: us-east-1
   stage: ${opt:stage,'dev'}
-  environment: ${file(secrets.yml):${self:provider.stage}}
+  environment: ${file(env.yml):${self:provider.stage}}
 custom:
   customDomain:
     domainName: ${self:provider.environment.DOMAIN_NAME}
